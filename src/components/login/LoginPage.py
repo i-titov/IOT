@@ -26,14 +26,27 @@ class LoginPage(Screen):
     def show_spinner(self, instance):
         self.spinner.active = True  # Show spinner
         Clock.schedule_once(self.login, 2)
+
     def login(self, instance):
         username = self.username_input.text
         password = self.password_input.text
         self.manager.current = 'camera_page'  # Switch to another screen
 
-        # Check if username and password are correct
-        if username == 'admin' and password == 'password':
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer YourAccessTokenHere'
+        }
+
+        # Make a POST request to the server
+        url = 'http://server/login'
+        data = {'username': username, 'password': password}
+        response = requests.post(url, json=data, headers=headers)
+
+        if response.status_code == 200:
             print("Login successful!")
+            self.manager.current = 'camera_page'  # Switch to camera page
         else:
             print("Invalid username or password")
+            self.spinner.active = False
+
 Window.clearcolor = (0.2, 0.7, 0.5, 1)
