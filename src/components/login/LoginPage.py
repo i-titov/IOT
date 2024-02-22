@@ -17,7 +17,7 @@ class LoginPage(Screen):
 
         layout = BoxLayout(orientation='vertical', size_hint=(None, None), size=(300, 200))
         layout.pos_hint = {'center_x': 0.5, 'center_y': 0.5}  # Center the layout
-        layout.add_widget(Label(text='Sign in', font_size=20))
+        layout.add_widget(Label(text='Sign in', font_size=20, size_hint=(None, None), size=(200, 50)))
         layout.add_widget(self.username_input)
         layout.add_widget(self.password_input)
         layout.add_widget(self.login_button)
