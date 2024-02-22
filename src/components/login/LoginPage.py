@@ -40,13 +40,13 @@ class LoginPage(Screen):
         # Make a POST request to the server
         url = 'http://server/login'
         data = {'username': username, 'password': password}
-        response = requests.post(url, json=data, headers=headers)
+        #response = requests.post(url, json=data, headers=headers)
+        self.manager.current = 'camera_page'  # Switch to camera page
 
-        if response.status_code == 200:
-            print("Login successful!")
-            self.manager.current = 'camera_page'  # Switch to camera page
-        else:
-            print("Invalid username or password")
-            self.spinner.active = False
+        #if response.status_code == 200:
+           # print("Login successful!")
+        #else:
+         #   print("Invalid username or password")
+          #  self.spinner.active = False
 
 Window.clearcolor = (0.2, 0.7, 0.5, 1)
