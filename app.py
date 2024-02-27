@@ -5,6 +5,7 @@ from src.components.camerapage.CameraPage import CameraPage
 
 
 
+
 class MyApp(App):
     def build(self):
         # Create the screen manager
@@ -13,6 +14,6 @@ class MyApp(App):
         sm.add_widget(CameraPage(name='camera_page'))
         return sm
 
-
+#
 if __name__ == '__main__':
     MyApp().run()
